@@ -1,0 +1,81 @@
+<!DOCTYPE>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>password generator</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body{
+			background-color: blue;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		#box{
+			width: 80%;
+			padding: 30px;
+			border-radius: 14px;
+			background-color: white;
+            margin: 0 auto;
+            display: block;
+            text-align: center;
+		}
+		h1{
+			color: blue;
+			text-align: center;
+			margin-bottom: 5px;
+		}
+		#input{
+			outline: none;
+			border: 1px solid blue;
+			border-radius: 4px;
+			display: block;
+			margin: 5px auto;
+			width: 400px;
+		}
+		.btns{
+			margin-top: 5px;
+			display: inline-flex;
+			justify-content: space-around;
+		}
+		.btn{
+			background-color: blue;
+			color: white;
+			border-radius: 30%;
+			padding: 5px 7px;
+			width: 120px;
+		}
+	</style>
+</head>
+<body>
+<div id="box">
+	<h1>Random Password Generator</h1>
+	<input id="input" placeholder="Create Password">
+	<div class="btns">
+		<button class="btn" id="btngen">Generate</button>
+		<button class="btn" id="btncopy">Copy</button>
+	</div>
+</div>
+<script type="text/javascript">
+	let password=document.getElementById("input");
+	let passwd="";
+	let passwdchar="QWERTYUIOPASDFGHJKL12345!@ZXC&**(}{NM^&*acbdnhdyuycyiw";
+	let passwdcharLen=passwdchar.length;
+	let passwdLen=Math.floor((Math.random()*6)+8);
+	function generatePasswd(){
+		for(let i=0;i<passwdLen;i++){
+			let charPosition=Math.floor(Math.random()*passwdcharLen);
+         passwd+=passwdchar.substring(charPosition,charPosition+1);
+		}
+		password.value=passwd;
+	}
+	document.getElementById("btngen").addEventListener("click",generatePasswd);
+</script>
+</body>
+</html>
